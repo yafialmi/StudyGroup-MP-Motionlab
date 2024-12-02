@@ -1,6 +1,6 @@
 # Study Group Motion Week 3
 
-Topic : Widget
+Topic : Slishing Ui
 
 Widget adalah komponen yang saling terhubung untuk membentuk antarmuka di Flutter, setiap elemen visual dalam Flutter disebut Widget. Flutter menggunakan konsep widget tree di mana setiap widget memiliki widget parent dan child. Widget essential ada beberapa, contohnya adalh sebagai berikut
 
