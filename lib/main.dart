@@ -16,6 +16,90 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class ProductDetail extends StatelessWidget {
+  const ProductDetail({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: const Icon(Icons.chevron_left),
+        centerTitle: true,
+        title: const Text("Product"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Icon(
+              Icons.favorite,
+              color: Colors.red[700],
+            ),
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                        'assets/images/jam.png',
+                        fit: BoxFit.cover,
+                      ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Text(
+                        "Mi Band 8 Pro",
+                        style: TextStyle(
+                            fontSize: 28, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Text(
+                        "\$54.00",
+                        style:
+                            TextStyle(fontSize: 20, color: Color(0xff00623B)),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Text(
+                        "Built for life and made to last, this full-zip corduroy jacket is part of our Nike Life collection. The spacious fit gives you plenty of room to layer underneath, while the soft corduroy keeps it casual and timeless.",
+                        style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.justify,
+                      ),
+                       const SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 50,
+                        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        decoration: BoxDecoration(
+                          color: Color(0xff00623B),
+                        ),
+                        child: Center(child: Text("Add to Bag.", style: TextStyle(fontSize: 18,color: Colors.white),)),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
