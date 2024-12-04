@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:motion_week_2/pages/login_page.dart';
+import 'package:motion_week_2/pages/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,9 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: '/login_page',
+      routes: {
+        '/login_page': (context) => const LoginPage(),
+        '/register_page' : (context) => const RegisterPage(),
+        '/home_page' : (context) => const HomePage(),
+      },
     );
   }
 }
@@ -82,11 +89,11 @@ class ProductDetail extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        decoration: const BoxDecoration(
                           color: Color(0xff00623B),
                         ),
-                        child: Center(child: Text("Add to Bag.", style: TextStyle(fontSize: 18,color: Colors.white),)),
+                        child: const Center(child: Text("Add to Bag.", style: TextStyle(fontSize: 18,color: Colors.white),)),
                       )
                     ],
                   ),
