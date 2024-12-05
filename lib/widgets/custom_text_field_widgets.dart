@@ -12,7 +12,7 @@ class CustomTextFieldWidgets extends StatelessWidget {
       decoration: InputDecoration(
           hintText: hintText,
           prefixIcon: iconText,
-          hintStyle: GoogleFonts.roboto(color: Colors.black87),
+          hintStyle: GoogleFonts.poppins(color: Colors.black87),
           border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(12)))),
     );
