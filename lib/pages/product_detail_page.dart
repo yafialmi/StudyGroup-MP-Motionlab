@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motion_week_2/model/product_model.dart';
 import 'package:motion_week_2/widgets/custom_button.dart';
 
 class ProductDetail extends StatelessWidget {
-  final String imageUrl, productName, productPrice;
+  final ProductModel model;
   final bool isFavorite;
-  const ProductDetail(
-      {super.key,
-      required this.imageUrl,
-      required this.productName,
-      required this.productPrice,
-      required this.isFavorite});
+  const ProductDetail({
+    required this.isFavorite,
+    required this.model,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ProductDetail extends StatelessWidget {
             onTap: () => Get.back(), child: const Icon(Icons.chevron_left)),
         centerTitle: true,
         title: Text(
-          productName,
+          model.namaProduct,
           style: GoogleFonts.poppins(fontSize: 20),
         ),
         actions: [
@@ -41,7 +41,7 @@ class ProductDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                imageUrl,
+                model.urlProduct,
                 fit: BoxFit.cover,
               ),
               Expanded(
@@ -52,14 +52,14 @@ class ProductDetail extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(productName,
+                      Text(model.namaProduct,
                           style: GoogleFonts.poppins(
                               fontSize: 28, fontWeight: FontWeight.w600)),
                       const SizedBox(
                         height: 15,
                       ),
                       Text(
-                        productPrice,
+                        model.hargaProduct,
                         style: GoogleFonts.poppins(
                           fontSize: 20,
                           color: const Color(0xff00623B),

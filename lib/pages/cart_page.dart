@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motion_week_2/controller/cart_controller.dart';
+import 'package:motion_week_2/model/product_model.dart';
 import 'package:motion_week_2/widgets/custom_button.dart';
 
 class CartPage extends StatelessWidget {
@@ -27,16 +28,18 @@ class CartPage extends StatelessWidget {
               Column(
                 children: [
                   ItemTile(
-                      id: 1,
-                      namaProduct: 'Mi Band 8 Pro - Brand New',
-                      urlProduct: 'assets/images/jam.png',
-                      hargaProduct: '\$54.00',
+                      model: ProductModel(
+                          id: 1,
+                          namaProduct: 'Mi Band 8 Pro',
+                          urlProduct: 'assets/images/jam.png',
+                          hargaProduct: '\$54.00'),
                       controller: controller),
                   ItemTile(
-                      id: 2,
-                      namaProduct: 'Lycra Men\'s shirt',
-                      urlProduct: 'assets/images/baju.png',
-                      hargaProduct: '\$12.00',
+                      model: ProductModel(
+                          id: 2,
+                          namaProduct: 'Lycra Men\'s shirt',
+                          urlProduct: 'assets/images/baju.png',
+                          hargaProduct: '\$12.00'),
                       controller: controller),
                 ],
               ),
@@ -50,16 +53,8 @@ class CartPage extends StatelessWidget {
 }
 
 class ItemTile extends StatelessWidget {
-  final int id;
-  final String namaProduct, urlProduct, hargaProduct;
-  const ItemTile({
-    super.key,
-    required this.controller,
-    required this.id,
-    required this.namaProduct,
-    required this.urlProduct,
-    required this.hargaProduct,
-  });
+  final ProductModel model;
+  const ItemTile({super.key, required this.controller, required this.model});
 
   final CartController controller;
 
@@ -67,13 +62,13 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Image.asset(urlProduct),
+        leading: Image.asset(model.urlProduct),
         title: Text(
-          namaProduct,
+          model.namaProduct,
           style: GoogleFonts.poppins(),
         ),
         subtitle: Text(
-          hargaProduct,
+          model.hargaProduct,
           style: GoogleFonts.poppins(color: Colors.green[700]),
         ),
         trailing: Card(
@@ -81,14 +76,14 @@ class ItemTile extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                  onPressed: () => controller.quantityIncrement(id),
+                  onPressed: () => controller.quantityIncrement(model.id),
                   icon: const Icon(Icons.add_rounded)),
               Obx(() => Text(
-                    controller.getQuantity(id).toString(),
+                    controller.getQuantity(model.id).toString(),
                     style: GoogleFonts.poppins(),
                   )),
               IconButton(
-                  onPressed: () => controller.quantityDecrement(id),
+                  onPressed: () => controller.quantityDecrement(model.id),
                   icon: const Icon(Icons.remove_rounded)),
             ],
           ),

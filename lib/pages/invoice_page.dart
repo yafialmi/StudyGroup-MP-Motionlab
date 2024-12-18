@@ -34,7 +34,7 @@ class InvoicePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Lottie.asset('assets/lottie/lottie_success.json',
-                    animate: true, width: 150, height: 150),
+                    repeat: false, width: 150, height: 150),
                 Text(
                   'Transaction Success',
                   style: GoogleFonts.poppins(),

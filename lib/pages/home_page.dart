@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:motion_week_2/model/product_model.dart';
 import 'package:motion_week_2/pages/product_detail_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -109,24 +110,28 @@ class HomePage extends StatelessWidget {
                   crossAxisSpacing: 12,
                   children: const [
                     BestSellerItem(
+                      id: 1,
                       productPrice: "\$54.00",
                       isFavorite: true,
                       productName: "Mi Band 8 Pro",
                       imageUrl: 'assets/images/jam.png',
                     ),
                     BestSellerItem(
+                      id: 2,
                       productPrice: "\$12.00",
                       isFavorite: false,
                       productName: "Lycra Men's shirt",
                       imageUrl: 'assets/images/baju.png',
                     ),
                     BestSellerItem(
+                      id: 3,
                       productPrice: "\$30.00",
                       isFavorite: false,
                       productName: "Artisan Headset",
                       imageUrl: 'assets/images/headset.png',
                     ),
                     BestSellerItem(
+                      id: 4,
                       productPrice: "\$24.00",
                       isFavorite: false,
                       productName: "AeroStreet",
@@ -163,10 +168,12 @@ class HomePage extends StatelessWidget {
 }
 
 class BestSellerItem extends StatelessWidget {
+  final int id;
   final String productName, productPrice, imageUrl;
   final bool isFavorite;
   const BestSellerItem({
     super.key,
+    required this.id,
     required this.productName,
     required this.productPrice,
     required this.imageUrl,
@@ -177,9 +184,11 @@ class BestSellerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Get.to(ProductDetail(
-          imageUrl: imageUrl,
-          productName: productName,
-          productPrice: productPrice,
+          model: ProductModel(
+              id: id,
+              namaProduct: productName,
+              urlProduct: imageUrl,
+              hargaProduct: productPrice),
           isFavorite: isFavorite)),
       child: Container(
         decoration: BoxDecoration(
