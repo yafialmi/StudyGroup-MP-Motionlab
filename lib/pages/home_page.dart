@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:motion_week_2/pages/product_detail_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,10 +18,13 @@ class HomePage extends StatelessWidget {
           width: 50,
           height: 50,
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Icon(Icons.shopping_bag_outlined),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: InkWell(
+                onTap: () => Get.toNamed('/cart_page'),
+                splashColor: Colors.grey,
+                child: const Icon(Icons.shopping_bag_outlined)),
           ),
         ],
       ),
@@ -145,17 +149,14 @@ class HomePage extends StatelessWidget {
                 icon: Icon(Icons.home_outlined, color: Colors.white),
                 label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.wallet_outlined, color: Colors.white),
-                label: "Wallet"),
-            BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_outline, color: Colors.white),
                 label: "Favorite"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.notifications_outlined,
+                  Icons.person_outline,
                   color: Colors.white,
                 ),
-                label: "Notifications"),
+                label: "Profile"),
           ]),
     );
   }
@@ -175,13 +176,11 @@ class BestSellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => ProductDetail(
-            imageUrl: imageUrl,
-            productName: productName,
-            productPrice: productPrice,
-            isFavorite: isFavorite),
-      )),
+      onTap: () => Get.to(ProductDetail(
+          imageUrl: imageUrl,
+          productName: productName,
+          productPrice: productPrice,
+          isFavorite: isFavorite)),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(12)),

@@ -12,7 +12,8 @@ class CustomButton extends StatelessWidget {
         width: 300,
         child: ElevatedButton(
           onPressed: () => buttonFunction(),
-          style: const ButtonStyle(
+          style:  const ButtonStyle(
+            splashFactory: InkSplash.splashFactory,
               shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)))),
               elevation: WidgetStatePropertyAll(8),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:motion_week_2/widgets/custom_button.dart';
 
 class ProductDetail extends StatelessWidget {
   final String imageUrl, productName, productPrice;
@@ -15,10 +18,12 @@ class ProductDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-            onTap: () => Navigator.pop(context),
-            child: const Icon(Icons.chevron_left)),
+            onTap: () => Get.back(), child: const Icon(Icons.chevron_left)),
         centerTitle: true,
-        title: Text(productName),
+        title: Text(
+          productName,
+          style: GoogleFonts.poppins(fontSize: 20),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -33,7 +38,7 @@ class ProductDetail extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 imageUrl,
@@ -47,25 +52,25 @@ class ProductDetail extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(
-                        productName,
-                        style: const TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.w500),
-                      ),
+                      Text(productName,
+                          style: GoogleFonts.poppins(
+                              fontSize: 28, fontWeight: FontWeight.w600)),
                       const SizedBox(
                         height: 15,
                       ),
                       Text(
                         productPrice,
-                        style: const TextStyle(
-                            fontSize: 20, color: Color(0xff00623B)),
+                        style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          color: const Color(0xff00623B),
+                        ),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      const Text(
+                      Text(
                         "Built for life and made to last, this full-zip corduroy jacket is part of our Nike Life collection. The spacious fit gives you plenty of room to layer underneath, while the soft corduroy keeps it casual and timeless.",
-                        style: TextStyle(fontSize: 18),
+                        style: GoogleFonts.poppins(fontSize: 18),
                         textAlign: TextAlign.justify,
                       ),
                       const SizedBox(
@@ -75,19 +80,10 @@ class ProductDetail extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                height: 50,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                decoration: const BoxDecoration(
-                  color: Color(0xff00623B),
-                ),
-                child: const Center(
-                    child: Text(
-                  "Add to Bag.",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                )),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomButton(
+                    buttonText: 'Add to Bag', buttonFunction: () {}),
               )
             ],
           ),

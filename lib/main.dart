@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:motion_week_2/pages/cart_page.dart';
 import 'package:motion_week_2/pages/home_page.dart';
+import 'package:motion_week_2/pages/invoice_page.dart';
 import 'package:motion_week_2/pages/login_page.dart';
 import 'package:motion_week_2/pages/register_page.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -16,14 +19,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/login_page',
-      routes: {
-        '/login_page': (context) => const LoginPage(),
-        '/register_page': (context) => const RegisterPage(),
-        '/home_page': (context) => const HomePage(),
-      },
+      getPages: [
+        GetPage(name: '/login_page', page: () => const LoginPage()),
+        GetPage(name: '/register_page', page: () => const RegisterPage()),
+        GetPage(name: '/home_page', page: () => const HomePage()),
+        GetPage(name: '/cart_page', page: () => const CartPage()),
+        GetPage(name: '/invoice_page', page: () => const InvoicePage()),
+      ],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:motion_week_2/widgets/custom_button.dart';
@@ -63,13 +64,13 @@ class MainLoginContent extends StatelessWidget {
         const CustomSizedBoxSmallWidget(),
         CustomButton(
           buttonText: 'Login',
-          buttonFunction: () => Navigator.pushNamed(context, '/home_page'),
+          buttonFunction: () => Get.offNamed('/home_page'),
         ),
         const CustomSizedBoxSmallWidget(),
         CustomTextButton(
           normalText: "Don't have an account?",
           boldText: "Register",
-          buttonFunction: () => Navigator.pushNamed(context, '/register_page'),
+          buttonFunction: () => Get.toNamed('/register_page'),
         )
       ],
     );
