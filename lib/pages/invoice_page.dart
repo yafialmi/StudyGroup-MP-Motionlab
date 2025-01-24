@@ -44,8 +44,8 @@ class InvoicePage extends StatelessWidget {
                   style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
                 ),
                 const Divider(
-                  indent: 65,
-                  endIndent: 65,
+                  indent: 10,
+                  endIndent: 10,
                 ),
                 const TextGap(
                   textStart: 'Invoice Number',
@@ -63,10 +63,10 @@ class InvoicePage extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
                 const Divider(
-                  indent: 65,
-                  endIndent: 65,
+                  indent: 10,
+                  endIndent: 10,
                 ),
-                const CustomSizedBoxLargeWidget(),
+                const CustomSizedBoxMediumWidget(),
                 const TextGap(
                     textStart: 'Detail Pesanan',
                     textEnd: '',
