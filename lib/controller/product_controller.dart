@@ -4,15 +4,15 @@ import 'package:motion_week_2/service/api_service.dart';
 
 class ProductController extends GetxController {
   final apiService = ApiService();
-  final products = <ProductModel>[].obs;
+  final products = <Product>[].obs;
   final isLoading = false.obs;
 
-  Future getProducts(String uri) async {
+  Future<ProductModel> getProductsByCategories(String uri) async {
     try {
       isLoading.value = true;
-      final response = await apiService.get(uri);
-      final data = ProductModel.fromJson(response);
-      products.assignAll([data]);
+      final response = await apiService.getProductByCategory(uri);
+      products.assignAll(response.products);
+      return response;
     } catch (error) {
       throw Exception('Error: $error');
     } finally {

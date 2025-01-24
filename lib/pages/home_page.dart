@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:motion_week_2/controller/category_controller.dart';
 import 'package:motion_week_2/controller/product_controller.dart';
-// import 'package:motion_week_2/model/product_model.dart';
-// import 'package:motion_week_2/pages/product_detail_page.dart';
+import 'package:motion_week_2/pages/product_detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,11 +40,12 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 225,
                 child: Text(
                   "Our Way of Loving You Back",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                  style: GoogleFonts.poppins(
+                      fontSize: 24, fontWeight: FontWeight.w600),
                 ),
               ),
               const SizedBox(
@@ -87,8 +88,8 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final category = categoryController.categories[index];
                       return InkWell(
-                        onTap: () =>
-                            productController.getProducts(category.url),
+                        onTap: () => productController
+                            .getProductsByCategories(category.url),
                         child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 10),
                             padding: const EdgeInsets.symmetric(
@@ -110,9 +111,10 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const Text(
+              Text(
                 "Our Best Seller",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                style: GoogleFonts.poppins(
+                    fontSize: 24, fontWeight: FontWeight.w600),
               ),
               const SizedBox(
                 height: 15,
@@ -121,11 +123,12 @@ class HomePage extends StatelessWidget {
                 child: Obx(() => GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 12,
+                              crossAxisSpacing: 12),
                       itemCount: productController.products.length,
                       itemBuilder: (context, index) {
-                        final products =
-                            productController.products[0].products[index];
+                        final products = productController.products[index];
                         if (productController.isLoading.value == true) {
                           return const Center(
                               child: CircularProgressIndicator(
@@ -183,7 +186,8 @@ class BestSellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () =>
+          Get.to(ProductDetailPage(isFavorite: isFavorite), arguments: id),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(12)),
@@ -211,13 +215,16 @@ class BestSellerItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(productName),
+                    Text(
+                      productName,
+                      style: GoogleFonts.poppins(),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           productPrice,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Colors.green[700],
                               fontWeight: FontWeight.w600),
                         ),
